@@ -419,3 +419,29 @@ def generate_nonsense_solution(pool, nonsense_len=30):
         nonsense_string += random.choice(pool)
         
     return nonsense_string
+
+
+def generate_baby_scrambles(letter_pool, count=500, mode='edges'):
+    """
+    mode: 'edges' for edges-only, 'corners' for corners-only, 'combined' for both
+    """
+    from kociemba_script import get_solve_sequence
+
+    to_return = ""
+
+    for i in range(count):
+        one_nons = generate_nonsense_solution(letter_pool)
+
+        if mode == 'edges':
+            solution_string = simplify_solution(one_nons + '.', priority=letter_pool)
+        elif mode == 'corners':
+            solution_string = '.' + simplify_solution('.' + one_nons, priority=letter_pool).split('.')[1]
+        else:  # combined
+            solution_string = simplify_solution(one_nons + '.', priority=letter_pool)
+
+        one_cube = scramble_cube_with_solution_string(solution_string)
+        k_solution = get_solve_sequence(one_cube, reverse=True)
+        to_return += "\n"
+        to_return += k_solution
+
+    return to_return

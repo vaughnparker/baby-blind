@@ -1,0 +1,51 @@
+► Edge setup moves
+A: Lw2 D' L2
+B: buffer (you can't swap with B)
+C: Lw2 D L2
+D: no setup moves
+E: L Dw' L
+F: Dw' L
+G: L' Dw' L
+H: Dw L'
+I: Lw D' L2
+J: Dw2 L
+K: Lw D L2
+L: L'
+M: buffer (you can't swap with M)
+N: Dw L
+O: D2 L' Dw' L
+P: Dw' L'
+Q: Lw' D L2
+R: L
+S: Lw' D' L2
+T: Dw2 L'
+U: D' L2
+V: D2 L2
+W: D L2
+X: L2
+
+► Corner setup moves
+A: buffer piece (you can't swap with A)
+B: R2
+C: F2 D
+D: F2
+E: buffer piece (you can't swap with E)
+F: F' D
+G: F'
+H: D' R
+I: F R'
+J: R'
+K: F' R'
+L: F2 R'
+M: F
+N: R' F
+O: R2 F
+P: R F
+Q: R D'
+R: buffer piece (you can't swap with R)
+S: D F'
+T: R
+U: D
+V: no setup moves
+W: D'
+X: D2
