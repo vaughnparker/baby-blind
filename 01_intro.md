@@ -85,12 +85,14 @@ R U' R' U' R U R' F' R U R' U' R' F R
 
 **Ra Perm** (used for parity):
 ```
-R U R' F' R U2 R' U2 R' F R U R U2 R' U'
+R U' R' U' R U R D R' U' R D' R' U2 R'
 ```
 
 > **When do you need each algorithm?**
-> - Phases 1A, 1B, 2A, and 2B: T Perm and Y Perm only
-> - Phase 2C onwards: Ra Perm is introduced for parity
+> - Phase 1A: T Perm only
+> - Phase 1B: Modified Y Perm only
+> - Phase 2A and 2B: T Perm and Modified Y Perm
+> - Phase 2C onwards: T Perm, Modified Y Perm, and Ra Perm
 
 ---
 
