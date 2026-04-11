@@ -27,19 +27,18 @@ These skills are the foundation of everything that follows.
 
 ## Before Moving to Phase 2
 
-Phase 1 trained edges and corners separately. Before moving on, it is worth spending
-some time doing **full scrambles** — scrambles where both edges and corners need to
-be solved.
+You might be tempted to try a full scramble — one where both edges and corners need
+to be solved — before moving on. That is understandable, but we recommend waiting.
 
-A full scramble will look just like a real blindfolded solve. You will memo all the
-edges first, then all the corners, then solve edges, then corners.
+A full solve introduces two new challenges that Phase 1 did not prepare you for:
 
-Try 10-20 full scrambles before moving to Phase 2. You can generate a random scramble
-using any standard Rubik's cube scramble generator. The goal is simply to get
-comfortable with the full process before Phase 2 begins adding memo length pressure.
+1. **Longer memos** — holding both edge and corner letters in your head at the same
+   time is significantly harder than holding one or the other.
+2. **Parity** — a situation that occurs in roughly half of all solves, requiring a
+   third algorithm (the Ra Perm) that you have not yet learned.
 
-Do not worry about how long it takes. Do not worry about your memo length. Just focus
-on completing the solve correctly.
+Phase 2 will introduce both of these challenges gradually and in a controlled way.
+Trust the process and move on to Phase 2 when you feel ready.
 
 ---
 
