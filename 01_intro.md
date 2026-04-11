@@ -62,8 +62,9 @@ In Speffz, each of the 24 edge stickers and 24 corner stickers on the cube is as
 a letter from A to X (Y and Z are not used). You will learn what each letter looks like
 on the cube as you work through Phase 1 of this repo.
 
-For a visual reference, JPerm's video above includes a clear diagram of the Speffz
-lettering scheme.
+For a visual reference:
+- [Speffz diagram image](https://www.speedsolving.com/wiki/images/3/36/Speffz-333-western.png)
+- [Speffz on the Speedsolving Wiki](https://www.speedsolving.com/wiki/index.php/Speffz)
 
 ---
 
@@ -88,7 +89,7 @@ R U R' F' R U2 R' U2 R' F R U R U2 R' U'
 ```
 
 > **When do you need each algorithm?**
-> - Phases 1 and 2A/2B: T Perm and Y Perm only
+> - Phases 1A, 1B, 2A, and 2B: T Perm and Y Perm only
 > - Phase 2C onwards: Ra Perm is introduced for parity
 
 ---
@@ -98,12 +99,14 @@ R U R' F' R U2 R' U2 R' F R U R U2 R' U'
 The learning path is structured into two phases:
 
 **Phase 1 - Recognition Training**
-Learn to recognize and trace every edge and corner piece on the cube, using a
-progressively larger set of letters. Start with edges, then corners.
+- Phase 1A: Edge recognition
+- Phase 1B: Corner recognition
 
 **Phase 2 - Memo Retention Training**
-Practice holding longer and longer sequences of letters in your memory, culminating
-in full blindfolded solves.
+- Phase 2A: Constructed short memos, no parity
+- Phase 2B: Natural length memos, no parity
+- Phase 2C: Parity introduced
+- Phase 2D: Full unrestricted solves
 
 ### How to Progress Through Levels
 
