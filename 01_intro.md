@@ -85,7 +85,7 @@ R U' R' U' R U R' F' R U R' U' R' F R
 
 **Ra Perm** (used for parity):
 ```
-R U' R' U' R U R D R' U' R D' R' U2 R'
+R U' R' U' R U R D R' U' R D' R' U2 R' U'
 ```
 
 > **When do you need each algorithm?**
