@@ -1,5 +1,5 @@
 # baby-blind
-Baby (read:beginner) 3BLD solver
+Baby (read: beginner) 3BLD solver
 
 This will hopefully be a program that can be used to teach the user how to solve a 3x3 Rubik's cube blindfolded. The end goal is a script that prompts the user with scrambles that are "easy" in several levels.
 
