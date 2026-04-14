@@ -22,7 +22,7 @@ Phase 2 is split into four sub-phases:
 
 **Phase 2A - Constructed Short Memos (no parity)**
 Scrambles are constructed so that your total memo is very short — starting at just
-2 letters and building up to 12. This bridges the gap between Phase 1 and full-length
+2 letters and building up to 14. This bridges the gap between Phase 1 and full-length
 solves. You only need the T Perm and Modified Y Perm.
 
 **Phase 2B - Natural Memos, No Parity (no parity)**

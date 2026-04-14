@@ -1,0 +1,1256 @@
+========== ./01_intro.md ==========
+# 01 - Introduction to Blindfolded Solving
+
+## Welcome
+
+This repository is a structured training program for learning to solve a Rubik's cube
+blindfolded, starting from absolute zero. If you work through it patiently and
+systematically, you will be able to solve a Rubik's cube without looking at it.
+
+This is not a quick process. Take your time. Enjoy it.
+
+---
+
+## Prerequisites
+
+You should know how to solve a Rubik's cube with your eyes open before starting this
+program. If you don't yet, here are some great resources:
+
+* How to Solve a Rubik's Cube - WIRED: https://www.youtube.com/watch?v=R-R0KrXvWbc
+* How to Solve a Rubik's Cube - JPerm: https://www.youtube.com/watch?v=7Ron6MN45LY
+* Charlie Eggins's Tutorial series
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 1 | Lettering Scheme and Tracing: https://www.youtube.com/watch?v=fqIU6Plcjr0
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 2 | Cycle Breaking, Pairing, and Wording: https://www.youtube.com/watch?v=BVefINLblEw
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 3 | Execution: https://www.youtube.com/watch?v=bYQ3cD5s5no
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 4 | Example Solve: https://www.youtube.com/watch?v=Wqa2wwSN3AE
+
+---
+
+## What is Blindfolded Solving?
+
+In a blindfolded solve, the solver is allowed to inspect the cube with their eyes open
+for a period of time (called **inspection** or **memo**), then puts on a blindfold and
+solves the cube entirely from memory.
+
+The key insight is that you don't need to be able to *see* the cube to solve it — you
+just need to have *memorized* where every piece needs to go. The solve itself becomes
+a purely mechanical process of executing algorithms you have practiced until they are
+muscle memory.
+
+---
+
+## What Method Does This Repo Use?
+
+This repo teaches **Old Pochmann (OP)**, the most beginner-friendly blindfolded solving
+method. Old Pochmann works by solving one piece at a time, using just a small number of
+algorithms that you likely already know from learning to solve the cube normally.
+
+The best introduction to Old Pochmann is this video by JPerm:
+- [JPerm - How to Solve a Rubik's Cube Blindfolded](https://www.youtube.com/watch?v=ZZ41gWvltT8)
+
+We strongly recommend watching this video before or alongside working through this repo.
+This repo is loosely based on JPerm's tutorial, but adds a structured progression system
+on top of it.
+
+> **Note for advanced learners:** The scrambles in Phase 1 of this repo are also useful
+> for people learning more advanced blindfolded methods such as Orozco or 3-Style. The
+> recognition and tracing skills trained in Phase 1 are method-agnostic.
+
+---
+
+## The Speffz Lettering Scheme
+
+Old Pochmann requires you to assign a letter to each sticker on the cube, so that you
+can describe the cube's state as a sequence of letters — your **memo**. This repo uses
+the **Speffz** lettering scheme, which is the most widely used standard.
+
+In Speffz, each of the 24 edge stickers and 24 corner stickers on the cube is assigned
+a letter from A to X (Y and Z are not used). You will learn what each letter looks like
+on the cube as you work through Phase 1 of this repo.
+
+For a visual reference:
+- [Speffz diagram image](https://www.speedsolving.com/wiki/images/3/36/Speffz-333-western.png)
+- [Speffz on the Speedsolving Wiki](https://www.speedsolving.com/wiki/index.php/Speffz)
+
+---
+
+## The Three Algorithms You Need
+
+Old Pochmann requires only three algorithms. You do not need to learn all three at once
+— this repo will tell you when to introduce each one.
+
+**T Perm** (used for edges):
+```
+R U R' U' R' F R2 U' R' U' R U R' F'
+```
+
+**Modified Y Perm** (used for corners):
+```
+R U' R' U' R U R' F' R U R' U' R' F R
+```
+
+**Ra Perm** (used for parity):
+```
+R U' R' U' R U R D R' U' R D' R' U2 R' U'
+```
+
+> **When do you need each algorithm?**
+> - Phase 1A: T Perm only
+> - Phase 1B: Modified Y Perm only
+> - Phase 2A and 2B: T Perm and Modified Y Perm
+> - Phase 2C onwards: T Perm, Modified Y Perm, and Ra Perm
+
+---
+
+## How to Use This Repo
+
+The learning path is structured into two phases:
+
+**Phase 1 - Recognition Training**
+- Phase 1A: Edge recognition
+- Phase 1B: Corner recognition
+
+**Phase 2 - Memo Retention Training**
+- Phase 2A: Constructed short memos, no parity
+- Phase 2B: Natural length memos, no parity
+- Phase 2C: Parity introduced
+- Phase 2D: Full unrestricted solves
+
+### How to Progress Through Levels
+
+Each level contains 500 scrambles. You do not need to do all 500. Instead, work through
+scrambles until you feel confident — a good rule of thumb is **10 successful solves in
+a row** before moving to the next level. That said, trust your own feel. If you feel
+ready, move on. If you don't, keep practicing.
+
+There is no timer here. Accuracy and confidence matter more than speed at this stage.
+
+---
+
+## What's Next?
+
+Head to [02 - Phase 1 Overview](phase_1_recog/02_phase1_overview.md) to begin.
+========== ./README.md ==========
+# baby-blind
+Baby (read: beginner) 3BLD solver
+
+**If you are here to learn blindfolded solving, start here: [01 - Introduction](01_intro.md)**
+
+---
+
+## Original Vision
+
+This project started as a program to teach users how to solve a 3x3 Rubik's cube
+blindfolded. The end goal was a structured series of scrambles with progressively
+increasing difficulty, starting from a very small subset of letters and slowly
+expanding to the full set.
+
+The original letter difficulty system for edges:
+
+```
+Edge Letters: A_CD EFGH IJKL _NOP QRST UVWX
+
+Level 1: ACD
+Level 2: ACD UVWX
+Level 3: ACD UVWX LR JT
+Level 4: ACD UVWX LR JT FH NP
+Level 5: ACD UVWX LR JT FH NP EIQ
+Level 6: ACD UVWX LR JT FH NP EIQ KS GO
+```
+
+### The Vision
+
+1. The human picks a level
+2. The computer generates a random string of letters from the letter set of the
+   selected level
+3. The computer simplifies that random string until it is something you would
+   actually memorize
+4. The computer finds the scrambled cube that would result from applying those
+   letters backwards
+5. The computer converts that scrambled cube into a friendlier format
+6. The computer applies Kociemba's algorithm, or some other algorithm, to find
+   the scramble sequence that results in that cube
+7. The computer gives the human the scramble sequence
+8. The human applies the scramble sequence, and then solves the cube and times
+   themselves
+9. This process repeats dozens or hundreds of times until the human feels
+   confident with all of the letters in the level, and then the human manually
+   chooses to advance to the next level
+
+---
+
+## What Has Been Built
+
+The original vision has been fully realized and expanded:
+
+- A complete cube simulation and Old Pochmann solver in Python
+- A Kociemba-based scramble generator that produces scrambles with controlled
+  memo difficulty
+- **Phase 1** (Recognition Training): 6 levels of edge-only scrambles and 6 levels
+  of corner-only scrambles, using progressively larger letter sets
+- **Phase 2** (Memo Retention Training):
+  - Phase 2A: Constructed short memos (2-12 letters, no parity)
+  - Phase 2B: Natural length memos (16-22 letters, no parity)
+  - Phase 2C: Parity guaranteed (2 and 16 letters)
+  - Phase 2D: Full unrestricted solves
+- A complete set of student-facing guides walking a complete beginner through the
+  entire learning path
+
+---
+
+## Repository Structure
+
+```
+01_intro.md                   ← Start here
+phase_1_recog/                ← Phase 1: Recognition Training
+    02_phase1_overview.md
+    phase_1a_edges/           ← Edge scrambles and guide
+    phase_1b_corners/         ← Corner scrambles and guide
+    05_bridge.md
+phase_2_memo/                 ← Phase 2: Memo Retention Training
+    06_phase2_overview.md
+    phase_2a_constructed/
+    phase_2b_no_parity/
+    phase_2c_parity_guaranteed/
+    phase_2d_full/
+scripts/                      ← Python scripts for generating scrambles
+docs/                         ← Reference documents
+notebooks/                    ← Development notebooks
+```
+```
+
+How does that look?
+========== ./docs/letter_difficulty_ordering.md ==========
+# Baby Blind - Letter Difficulty Ordering
+
+This document describes the letter difficulty ordering for edges and corners in the Baby Blind system.
+The letter scheme used is the Speffz lettering scheme.
+Buffers are excluded from all levels.
+
+- Edge buffers: B, M
+- Corner buffers: A, E, R
+
+---
+
+## Edges
+
+Setup moves use the Old Pochmann method with a Y perm.
+
+### Level 1 (new): A C D
+Reasoning: U face (top layer) edges, U face stickers
+
+```
+A: Lw2 D' L2
+C: Lw2 D L2
+D: no setup moves
+```
+
+### Level 2 (new): U V W X
+Reasoning: D face (bottom layer) edges, D face stickers
+
+```
+U: D' L2
+V: D2 L2
+W: D L2
+X: L2
+```
+
+### Level 3 (new): L R J T
+Reasoning: front and back sides of middle layer edges
+
+```
+L: L'
+R: L
+J: Dw2 L
+T: Dw2 L'
+```
+
+### Level 4 (new): F H N P
+Reasoning: left and right sides of middle layer edges
+
+```
+F: Dw' L
+H: Dw L'
+N: Dw L
+P: Dw' L'
+```
+
+### Level 5 (new): E I Q
+Reasoning: non-U face stickers of top layer edges
+
+```
+E: L Dw' L
+I: Lw D' L2
+Q: Lw' D L2
+```
+
+### Level 6 (new): K S G O
+Reasoning: non-D face stickers of bottom layer edges
+
+```
+K: Lw D L2
+S: Lw' D' L2
+G: L' Dw' L
+O: D2 L' Dw' L
+```
+
+---
+
+## Corners
+
+Setup moves use the Old Pochmann method with a Y perm.
+
+### Level 1 (new): U V W X
+Reasoning: D face stickers of D face corners (0 moves or single D move setup)
+
+```
+U: D
+V: no setup moves
+W: D'
+X: D2
+```
+
+### Level 2 (new): B C D
+Reasoning: U face stickers of U face corners
+
+```
+B: R2
+C: F2 D
+D: F2
+```
+
+### Level 3 (new): I J Q
+Reasoning: front and back face stickers of U face corners
+
+```
+I: F R'
+J: R'
+Q: R D'
+```
+
+### Level 4 (new): F M N
+Reasoning: left and right face stickers of U face corners
+
+```
+F: F' D
+M: F
+N: R' F
+```
+
+### Level 5 (new): K L S T
+Reasoning: front and back face stickers of D face corners
+
+```
+K: F' R'
+L: F2 R'
+S: D F'
+T: R
+```
+
+### Level 6 (new): G H O P
+Reasoning: left and right face stickers of D face corners
+
+```
+G: F'
+H: D' R
+O: R2 F
+P: R F
+```
+========== ./docs/memo_distribution_analysis.md ==========
+# Memo Length Distribution Analysis
+
+## Methodology
+
+We generated 10,000 random scrambles using `new_scrambled_cube()` and solved each one using
+`solve_cube()`. The solution string format is `<edge_memo><separator><corner_memo>`, where the
+separator is `.` for no parity and `|` for parity. We then measured the edge memo length, corner
+memo length, total memo length, and whether parity was present.
+
+## Results (10,000 samples)
+
+### Total memo length
+- Min: 14
+- Max: 26
+- Mean: 20.32
+
+### Edge memo length
+- Min: 6
+- Max: 17
+- Mean: 12.15
+
+### Corner memo length
+- Min: 4
+- Max: 13
+- Mean: 8.16
+
+### Parity
+- 5014/10000 solves had parity (50.1%)
+
+### Distribution of total memo length
+```
+ 14:  (4)
+ 15:  (0)
+ 16:  (192)
+ 17:  (0)
+ 18: ######### (1868)
+ 19:  (0)
+ 20: ####################### (4604)
+ 21:  (0)
+ 22: ############## (2843)
+ 23:  (0)
+ 24: ## (469)
+ 25:  (0)
+ 26:  (20)
+```
+
+## Key Observations
+
+1. **Total memo length is always even.** No odd totals appear in the distribution at all. This
+makes sense because Old Pochmann always solves pieces in pairs — each swap involves 2 pieces —
+so the total memo length must always be even.
+
+2. **The distribution is roughly bell-shaped**, peaking at 20 letters total, which represents
+the "typical" full solve.
+
+3. **Parity occurs in almost exactly 50% of solves**, which is consistent with theoretical
+expectations.
+
+4. **The vast majority of solves (over 90%) fall between 18 and 22 total letters.** The extremes
+(14 and 26) are very rare.
+
+## Implications for Phase 2 Level Design
+
+Based on this data, a natural progression for Phase 2 (memo retention training) might be:
+
+```
+Level 1:  2-4  total letters  (very short, almost solved cube)
+Level 2:  6-8  total letters
+Level 3:  10-12 total letters
+Level 4:  14-16 total letters
+Level 5:  18-20 total letters (approaching typical full solve)
+Level 6:  22-26 total letters (full difficulty)
+```
+
+Parity should be avoided in the early levels (1-3) since it adds execution complexity on top
+of memo complexity. It can be gradually introduced in levels 4 and above, once the student
+is comfortable holding a longer memo.
+
+Note that 6 is an arbitrary number of levels here — the actual number should be tuned based
+on student feedback and experience.
+
+========== ./phase_1_recog/02_phase1_overview.md ==========
+# 02 - Phase 1 Overview: Recognition Training
+
+## What is Recognition?
+
+Before you can solve the cube blindfolded, you need to be able to look at any sticker
+on the cube and instantly know its Speffz letter. This skill is called **recognition**,
+and it is the foundation of everything else in blindfolded solving.
+
+It sounds simple, but it takes real practice. When you first start, you will need to
+think carefully about each sticker. But with enough repetition, recognition becomes
+automatic — you look at a sticker and the letter comes to you immediately, without
+thinking.
+
+This is the goal of Phase 1.
+
+---
+
+## What is Tracing?
+
+Recognition alone is not enough. You also need to be able to **trace** a cycle of
+pieces. Tracing means following a chain of pieces from the buffer, through each target,
+and back to the buffer — building up your memo letter by letter as you go.
+
+If you have watched JPerm's blindfolded tutorial, you have already seen this process.
+Phase 1 is about drilling it until it is second nature.
+
+---
+
+## How Phase 1 is Structured
+
+Phase 1 is split into two sub-phases:
+
+**Phase 1A - Edges**
+
+You will practice tracing edges only. The corners of the cube will always be solved
+when you apply a Phase 1A scramble, so you only need to worry about the edges.
+
+You will start with a very small set of edge letters and gradually expand that set
+level by level, until you are comfortable with all 22 edge letters.
+
+You only need the **T Perm** for Phase 1A.
+
+**Phase 1B - Corners**
+
+You will practice tracing corners only. The edges of the cube will always be solved
+when you apply a Phase 1B scramble, so you only need to worry about the corners.
+
+Just like Phase 1A, you will start with a small set of corner letters and gradually
+expand level by level.
+
+You only need the **Modified Y Perm** for Phase 1B.
+
+---
+
+## How to Use the Scramble Files
+
+Each level contains a text file with 500 scrambles, one per line. Here is how to
+practice with them:
+
+1. **Start with a solved cube.**
+2. **Apply the scramble** from the file to your cube.
+3. **Inspect the cube** and build your memo. Write it down if you need to at first
+   — that is completely fine. Over time, try to hold it in your head.
+4. **Put on your blindfold** (or just close your eyes).
+5. **Execute your memo** — apply the setup moves and algorithms for each letter.
+6. **Remove your blindfold** and check if the cube is solved.
+
+---
+
+## What Counts as a Successful Solve?
+
+A solve is successful if and only if **the cube is fully solved at the end**. That
+means every sticker is in its correct position.
+
+It does not matter how long it took. It does not matter if you had to think hard about
+a setup move. It does not matter if you wrote down your memo. What matters is that the
+cube is solved at the end.
+
+As you progress, you will naturally get faster and more confident. But for now, focus
+purely on accuracy.
+
+---
+
+## How to Progress Through Levels
+
+Work through scrambles at your own pace. When you feel confident at a level, move on.
+
+A good rule of thumb is **10 successful solves in a row** before advancing to the next
+level. But trust your own feel — if you feel ready earlier, move on. If 10 in a row
+doesn't feel like enough, keep going.
+
+There is no rush. The goal is confidence, not speed.
+
+---
+
+## A Note on Advanced Methods
+
+If you are planning to eventually learn a more advanced blindfolded method such as
+**Orozco** or **3-Style**, the skills you build in Phase 1 are directly transferable.
+Recognition and tracing are method-agnostic — the letter system, the piece locations,
+and the tracing process are the same regardless of which algorithms you use to execute
+the solve.
+
+Phase 1 of this repo is a solid foundation for any blindfolded method.
+
+---
+
+## What's Next?
+
+Head to [03 - Phase 1A: Edges](phase_1a_edges/03_edges_guide.md) to begin.
+========== ./phase_1_recog/05_bridge.md ==========
+# 05 - Bridge: From Phase 1 to Phase 2
+
+## Congratulations
+
+You have completed Phase 1. You can now recognize and trace every edge and corner
+piece on the cube. This is a significant achievement — most people who attempt
+blindfolded solving never get this far.
+
+Take a moment to appreciate what you have built. You have gone from knowing nothing
+about blindfolded solving to having a complete mental map of every piece on the cube.
+
+---
+
+## What You Have Accomplished
+
+By completing Phase 1, you have developed two fundamental skills:
+
+1. **Recognition** — you can look at any sticker on the cube and immediately know
+   its Speffz letter.
+
+2. **Tracing** — you can follow a cycle of pieces from the buffer, through each
+   target, and back to the buffer, building up your memo letter by letter.
+
+These skills are the foundation of everything that follows.
+
+---
+
+## Before Moving to Phase 2
+
+You might be tempted to try a full scramble — one where both edges and corners need
+to be solved — before moving on. That is understandable, but we recommend waiting.
+
+A full solve introduces two new challenges that Phase 1 did not prepare you for:
+
+1. **Longer memos** — holding both edge and corner letters in your head at the same
+   time is significantly harder than holding one or the other.
+2. **Parity** — a situation that occurs in roughly half of all solves, requiring a
+   third algorithm (the Ra Perm) that you have not yet learned.
+
+Phase 2 will introduce both of these challenges gradually and in a controlled way.
+Trust the process and move on to Phase 2 when you feel ready.
+
+---
+
+## What Phase 2 is About
+
+In Phase 1, the difficulty was controlled by restricting which pieces were scrambled.
+In Phase 2, all pieces are in play — but the difficulty is now controlled by the
+**length of your memo**.
+
+You will start with very short memos and gradually work up to full-length solves. By
+the end of Phase 2, you will be doing complete, unrestricted blindfolded solves.
+
+---
+
+## What's Next?
+
+Head to [06 - Phase 2 Overview](../phase_2_memo/06_phase2_overview.md) to continue.
+========== ./phase_1_recog/phase_1a_edges/03_edges_guide.md ==========
+# 03 - Phase 1A: Edges
+
+## The Edge Buffer
+
+In Old Pochmann edges, the buffer is the **UR edge** (the edge between the U face and
+the R face). In Speffz, this edge has two stickers: **B** (the U face sticker) and
+**M** (the R face sticker). Because this is the buffer, you will never memorize B or M
+— they are excluded from all edge levels.
+
+This leaves 22 edge letters to learn: A C D E F G H I J K L N O P Q R S T U V W X.
+
+---
+
+## The Edge Levels
+
+You will work through 6 levels. Each level introduces a new set of letters on top of
+the previous level. By the end of Level 6, you will be comfortable with all 22 edge
+letters.
+
+### Level 1: A C D
+**New letters:** A C D
+
+**Reasoning:** These are the U face stickers of the top layer edges.
+
+```
+A: Lw2 D' L2
+C: Lw2 D L2
+D: no setup moves
+```
+
+### Level 2: U V W X
+**New letters:** U V W X
+
+**Reasoning:** These are the D face stickers of the bottom layer edges.
+
+```
+U: D' L2
+V: D2 L2
+W: D L2
+X: L2
+```
+
+### Level 3: L R J T
+**New letters:** L R J T
+
+**Reasoning:** These are the front and back face stickers of the middle layer edges.
+
+```
+L: L'
+R: L
+J: Dw2 L
+T: Dw2 L'
+```
+
+### Level 4: F H N P
+**New letters:** F H N P
+
+**Reasoning:** These are the left and right face stickers of the middle layer edges.
+
+```
+F: Dw' L
+H: Dw L'
+N: Dw L
+P: Dw' L'
+```
+
+### Level 5: E I Q
+**New letters:** E I Q
+
+**Reasoning:** These are the non-U face stickers of the top layer edges.
+
+```
+E: L Dw' L (alternative: L' Dw L')
+I: Lw D' L2
+Q: Lw' D L2
+```
+
+### Level 6: K S G O
+**New letters:** K S G O
+
+**Reasoning:** These are the non-D face stickers of the bottom layer edges.
+
+```
+K: Lw D L2
+S: Lw' D' L2
+G: L' Dw' L (alternatives: L Dw L' or D Lw D L2)
+O: D2 L' Dw' L (alternative: D' Lw D L2 or D Lw' D' L2)
+```
+
+---
+
+## Full Edge Setup Move Reference
+
+For convenience, here is the complete list of edge setup moves:
+
+```
+A: Lw2 D' L2
+B: buffer (you can't swap with B)
+C: Lw2 D L2
+D: no setup moves
+E: L Dw' L (alternative: L' Dw L')
+F: Dw' L
+G: L' Dw' L (alternatives: L Dw L' or D Lw D L2)
+H: Dw L'
+I: Lw D' L2
+J: Dw2 L
+K: Lw D L2
+L: L'
+M: buffer (you can't swap with M)
+N: Dw L
+O: D2 L' Dw' L (alternative: D' Lw D L2 or D Lw' D' L2)
+P: Dw' L'
+Q: Lw' D L2
+R: L
+S: Lw' D' L2
+T: Dw2 L'
+U: D' L2
+V: D2 L2
+W: D L2
+X: L2
+```
+
+---
+
+## What's Next?
+
+Work through the scramble files in this folder, starting with
+`edges_level_1_scrambles.txt`. When you have completed 10 successful solves in a row
+at Level 6, you are ready to move on.
+
+Head to [04 - Phase 1B: Corners](../phase_1b_corners/04_corners_guide.md) to continue.
+========== ./phase_1_recog/phase_1b_corners/04_corners_guide.md ==========
+# 04 - Phase 1B: Corners
+
+## The Corner Buffer
+
+In Old Pochmann corners, the buffer is the **ULB corner** (the corner between the U
+face, L face, and B face). In Speffz, this corner has three stickers: **A** (the U
+face sticker), **E** (the L face sticker), and **R** (the B face sticker). Because
+this is the buffer, you will never memorize A, E, or R — they are excluded from all
+corner levels.
+
+The target is **V** (the DFR corner, no setup moves required).
+
+This leaves 21 corner letters to learn: B C D F G H I J K L M N O P Q S T U V W X.
+
+---
+
+## The Corner Levels
+
+You will work through 6 levels. Each level introduces a new set of letters on top of
+the previous level. By the end of Level 6, you will be comfortable with all 21 corner
+letters.
+
+### Level 1: U V W X
+**New letters:** U V W X
+
+**Reasoning:** These are the D face stickers of the D face corners.
+
+```
+U: D
+V: no setup moves
+W: D'
+X: D2
+```
+
+### Level 2: B C D
+**New letters:** B C D
+
+**Reasoning:** These are the U face stickers of the U face corners.
+
+```
+B: R2
+C: F2 D
+D: F2
+```
+
+### Level 3: I J Q
+**New letters:** I J Q
+
+**Reasoning:** These are the front and back face stickers of the U face corners.
+
+```
+I: F R'
+J: R'
+Q: R D'
+```
+
+### Level 4: F M N
+**New letters:** F M N
+
+**Reasoning:** These are the left and right face stickers of the U face corners.
+
+```
+F: F' D
+M: F
+N: R' F
+```
+
+### Level 5: K L S T
+**New letters:** K L S T
+
+**Reasoning:** These are the front and back face stickers of the D face corners.
+
+```
+K: F' R'
+L: F2 R'
+S: D F'
+T: R
+```
+
+### Level 6: G H O P
+**New letters:** G H O P
+
+**Reasoning:** These are the left and right face stickers of the D face corners.
+
+```
+G: F'
+H: D' R
+O: R2 F
+P: R F
+```
+
+---
+
+## Full Corner Setup Move Reference
+
+For convenience, here is the complete list of corner setup moves:
+
+```
+A: buffer piece (you can't swap with A)
+B: R2
+C: F2 D
+D: F2
+E: buffer piece (you can't swap with E)
+F: F' D
+G: F'
+H: D' R
+I: F R'
+J: R'
+K: F' R'
+L: F2 R'
+M: F
+N: R' F
+O: R2 F
+P: R F
+Q: R D'
+R: buffer piece (you can't swap with R)
+S: D F'
+T: R
+U: D
+V: no setup moves
+W: D'
+X: D2
+```
+
+---
+
+## What's Next?
+
+Work through the scramble files in this folder, starting with
+`corners_level_1_scrambles.txt`. When you have completed 10 successful solves in a row
+at Level 6, you are ready to move on.
+
+Head to [05 - Bridge](../05_bridge.md) to continue.
+========== ./phase_2_memo/06_phase2_overview.md ==========
+# 06 - Phase 2 Overview: Memo Retention Training
+
+## What is Memo Retention?
+
+In Phase 1, you practiced recognizing and tracing pieces. The scrambles were designed
+to keep your memo short and manageable — you were only ever tracing edges or corners,
+never both at the same time.
+
+In Phase 2, the training wheels come off. You will now be tracing both edges and
+corners in the same solve. The challenge is no longer *which* pieces to recognize —
+you already know all of them. The challenge is now *how many* you can hold in your
+head at once.
+
+This skill is called **memo retention**, and it is what separates a solver who can
+do short solves from one who can do full, unrestricted blindfolded solves.
+
+---
+
+## How Phase 2 is Structured
+
+Phase 2 is split into four sub-phases:
+
+**Phase 2A - Constructed Short Memos (no parity)**
+Scrambles are constructed so that your total memo is very short — starting at just
+2 letters and building up to 12. This bridges the gap between Phase 1 and full-length
+solves. You only need the T Perm and Modified Y Perm.
+
+**Phase 2B - Natural Memos, No Parity (no parity)**
+Scrambles are fully random, but filtered so that parity never occurs and memo length
+falls within a specific range. You will work through four memo length brackets:
+16, 18, 20, and 22 letters. You only need the T Perm and Modified Y Perm.
+
+**Phase 2C - Parity Introduced (parity guaranteed)**
+For the first time, you will encounter parity in every single scramble. The memo
+lengths are kept short and familiar so that you can focus entirely on learning to
+recognize and execute the Ra Perm. This is where you learn the third and final
+algorithm.
+
+**Phase 2D - Full Difficulty**
+No restrictions. Fully random scrambles, any memo length, parity or not. This is
+a real blindfolded solve. If you can complete 10 in a row successfully, you are a
+blindfolded solver.
+
+---
+
+## What is Parity?
+
+Parity is a situation that occurs in roughly half of all blindfolded solves. You will
+know you have parity if, after tracing all your edges, you have memorized an **odd
+number of edge letters**.
+
+When parity occurs, you must execute the **Ra Perm** after solving your edges and
+before solving your corners. If you do not, your corners will not solve correctly.
+
+The Ra Perm is:
+```
+R U' R' U' R U R D R' U' R D' R' U2 R' U'
+```
+
+Do not worry about learning the Ra Perm yet — Phase 2A and 2B are designed so that
+parity never occurs. You will not need the Ra Perm until Phase 2C.
+
+---
+
+## How to Progress Through Levels
+
+The same criterion applies as in Phase 1: **10 successful solves in a row** before
+moving to the next level. Trust your own feel — if you feel ready earlier, move on.
+If you need more practice, keep going.
+
+---
+
+## What's Next?
+
+Head to [07 - Phase 2A](phase_2a_constructed/07_phase2a_guide.md) to begin.
+========== ./phase_2_memo/phase_2a_constructed/07_phase2a_guide.md ==========
+# 07 - Phase 2A: Constructed Short Memos
+
+## What is Phase 2A?
+
+In Phase 2A, scrambles are constructed so that your total memo — edges and corners
+combined — is exactly a specific length. This is different from Phase 1, where the
+restriction was on which letters could appear. Here, all 22 edge letters and all 21
+corner letters are in play. The only restriction is how many you need to memorize.
+
+Parity never occurs in Phase 2A. You only need the **T Perm** and **Modified Y Perm**.
+
+---
+
+## The Levels
+
+### Level 1: 2 total letters
+Your memo will contain exactly 2 letters in total, across edges and corners combined.
+
+> **Note:** With only 2 letters and no parity, the only valid splits are 2 edges and
+> 0 corners, or 0 edges and 2 corners. A split of 1 edge and 1 corner would require
+> an odd number of edge letters, which means parity — and parity is excluded in this
+> level. So every Level 1 scramble is effectively either edges-only or corners-only.
+
+### Level 2: 4 total letters
+Your memo will contain exactly 4 letters in total.
+
+### Level 3: 6 total letters
+Your memo will contain exactly 6 letters in total.
+
+### Level 4: 8 total letters
+Your memo will contain exactly 8 letters in total.
+
+### Level 5: 10 total letters
+Your memo will contain exactly 10 letters in total.
+
+### Level 6: 12 total letters
+Your memo will contain exactly 12 letters in total.
+
+### Level 7: 14 total letters
+Your memo will contain exactly 14 letters in total.
+
+---
+
+## How to Use the Scramble Files
+
+The process is the same as in Phase 1:
+
+1. **Start with a solved cube.**
+2. **Apply the scramble** from the file to your cube.
+3. **Inspect the cube** and build your memo — edges first, then corners.
+4. **Put on your blindfold.**
+5. **Solve edges** using the T Perm.
+6. **Solve corners** using the Modified Y Perm.
+7. **Remove your blindfold** and check if the cube is solved.
+
+Work through the levels in order, starting with
+`memo_length_2_scrambles.txt`. Use the **10 successful solves in a row** criterion
+before moving to the next level.
+
+---
+
+## What's Next?
+
+Head to [08 - Phase 2B](../phase_2b_no_parity/08_phase2b_guide.md) to continue.
+========== ./phase_2_memo/phase_2b_no_parity/08_phase2b_guide.md ==========
+# 08 - Phase 2B: Natural Memos, No Parity
+
+## What is Phase 2B?
+
+In Phase 2A, scrambles were constructed to have a specific memo length. In Phase 2B,
+scrambles are fully random — but filtered so that parity never occurs and your memo
+length falls within a specific range.
+
+This is an important transition. For the first time, you are solving scrambles that
+were not specially constructed for you. The cube is in a genuinely random state. The
+only concession is that parity has been filtered out, so you still only need the
+**T Perm** and **Modified Y Perm**.
+
+---
+
+## What to Expect
+
+Based on analysis of 10,000 random scrambles, the distribution of memo lengths for
+a fully random blindfolded solve looks like this:
+
+```
+14 letters:  4 solves    (0.04%)
+16 letters:  192 solves  (1.92%)
+18 letters:  1868 solves (18.68%)
+20 letters:  4604 solves (46.04%)
+22 letters:  2843 solves (28.43%)
+24 letters:  469 solves  (4.69%)
+26 letters:  20 solves   (0.20%)
+```
+
+Note that memo length is always even. This is a consequence of the cube's permutation
+structure — any valid scramble can only be solved with an even total number of swaps,
+which means your memo will always have an even number of letters. This is actually a
+useful error-checking tool: if you finish tracing and your edge count and corner count
+are not both even or both odd, you have made a mistake in tracing and should retrace
+before putting on your blindfold.
+
+The vast majority of full solves (over 90%) fall between 18 and 22 letters. Level 4
+of Phase 2B — 22 letters — is therefore close to a typical full solve in terms of
+memo length.
+
+## The Levels
+
+### Level 1: 16 total letters
+Your memo will contain exactly 16 letters in total. This is on the shorter end of
+naturally occurring memo lengths.
+
+### Level 2: 18 total letters
+Your memo will contain exactly 18 letters in total.
+
+### Level 3: 20 total letters
+Your memo will contain exactly 20 total letters. This is the most common memo length
+in a fully random solve.
+
+### Level 4: 22 total letters
+Your memo will contain exactly 22 letters in total.
+
+---
+
+## How to Use the Scramble Files
+
+The process is the same as in Phase 2A:
+
+1. **Start with a solved cube.**
+2. **Apply the scramble** from the file to your cube.
+3. **Inspect the cube** and build your memo — edges first, then corners.
+4. **Put on your blindfold.**
+5. **Solve edges** using the T Perm.
+6. **Solve corners** using the Modified Y Perm.
+7. **Remove your blindfold** and check if the cube is solved.
+
+Work through the levels in order, starting with
+`memo_length_16_scrambles.txt`. Use the **10 successful solves in a row** criterion
+before moving to the next level.
+
+---
+
+## What's Next?
+
+Head to [09 - Phase 2C](../phase_2c_parity_guaranteed/09_phase2c_guide.md) to continue.
+========== ./phase_2_memo/phase_2c_parity_guaranteed/09_phase2c_guide.md ==========
+# 09 - Phase 2C: Parity Introduced
+
+## What is Phase 2C?
+
+In Phase 2C, every single scramble has parity. The memo lengths are kept short and
+familiar — just 2 or 16 letters total — so that you can focus entirely on one new
+challenge: learning to detect and execute parity.
+
+This is where you learn the **Ra Perm**, the third and final algorithm you need for
+Old Pochmann.
+
+---
+
+## What is Parity?
+
+Parity is a situation that occurs in roughly half of all blindfolded solves. It is a
+consequence of the cube's permutation structure — specifically, it arises when the
+edge permutation and corner permutation are both odd.
+
+In practical terms, you will know you have parity by counting your memo letters:
+
+- If your edge memo has an **odd** number of letters, you have parity.
+- If your edge memo has an **even** number of letters, you do not have parity.
+
+Your corner memo count will always agree with your edge memo count — both will be odd
+(parity) or both will be even (no parity). If one is odd and the other is even, you
+have made a mistake in tracing and should retrace before putting on your blindfold.
+
+---
+
+## What to Do When You Have Parity
+
+If you have parity, you must execute the **Ra Perm** after solving your edges and
+before solving your corners:
+
+```
+R U' R' U' R U R D R' U' R D' R' U2 R' U'
+```
+
+The order is:
+1. Solve edges (T Perm)
+2. Execute Ra Perm
+3. Solve corners (Modified Y Perm)
+
+If you do not execute the Ra Perm when you have parity, your corners will not solve
+correctly.
+
+---
+
+## A Note on Solve Order
+
+This guide recommends solving edges first, then corners. This is the most common
+approach and is what JPerm's tutorial teaches.
+
+However, it is not required. You could solve corners first and edges second. If you
+do, parity detection works the same way — just check your corner memo count instead
+of your edge memo count. If your corner memo has an odd number of letters, you have
+parity, and you must execute the Ra Perm after solving corners and before solving
+edges.
+
+Whichever order you choose, be consistent — pick one and stick with it.
+
+---
+
+## The Levels
+
+### Level 1: 2 total letters (parity guaranteed)
+Your memo will contain exactly 2 letters in total — 1 edge and 1 corner. This is the
+simplest possible parity case. The memo burden is minimal so you can focus entirely
+on recognizing parity and executing the Ra Perm correctly.
+
+### Level 2: 16 total letters (parity guaranteed)
+Your memo will contain exactly 16 letters in total. This is a more realistic memo
+length, similar to Phase 2B Level 1. By this point you should be comfortable
+detecting and executing parity.
+
+---
+
+## How to Use the Scramble Files
+
+1. **Start with a solved cube.**
+2. **Apply the scramble** from the file to your cube.
+3. **Inspect the cube** and build your memo — edges first, then corners.
+4. **Count your edge letters** — they will always be odd in this phase.
+5. **Put on your blindfold.**
+6. **Solve edges** using the T Perm.
+7. **Execute the Ra Perm.**
+8. **Solve corners** using the Modified Y Perm.
+9. **Remove your blindfold** and check if the cube is solved.
+
+Work through the levels in order, starting with
+`memo_length_2_scrambles.txt`. Use the **10 successful solves in a row** criterion
+before moving to the next level.
+
+---
+
+## What's Next?
+
+Head to [10 - Phase 2D](../phase_2d_full/10_phase2d_guide.md) to continue.
+========== ./phase_2_memo/phase_2d_full/10_phase2d_guide.md ==========
+# 10 - Phase 2D: Full Difficulty
+
+## What is Phase 2D?
+
+Phase 2D is the final phase. There are no restrictions — scrambles are fully random,
+memo lengths vary from 14 to 26 letters, and parity occurs in roughly half of all
+solves.
+
+This is a real blindfolded solve.
+
+---
+
+## What to Expect
+
+You have all the tools you need:
+
+- **T Perm** for edges
+- **Modified Y Perm** for corners
+- **Ra Perm** for parity
+
+Every scramble in this phase is a complete test of everything you have built across
+Phase 1 and Phase 2. Some solves will feel easy. Some will feel hard. That is normal
+— it reflects the natural variation in scramble difficulty.
+
+Refer to the distribution from Phase 2B if you want a reminder of what memo lengths
+to expect. The most common memo length is 20 letters, and roughly half of all solves
+will have parity.
+
+---
+
+## How to Use the Scramble Files
+
+1. **Start with a solved cube.**
+2. **Apply the scramble** from the file to your cube.
+3. **Inspect the cube** and build your memo — edges first, then corners.
+4. **Count your edge letters** — if odd, you have parity.
+5. **Put on your blindfold.**
+6. **Solve edges** using the T Perm.
+7. **If parity: execute the Ra Perm.**
+8. **Solve corners** using the Modified Y Perm.
+9. **Remove your blindfold** and check if the cube is solved.
+
+---
+
+## A Closing Note
+
+If you have worked through this repo from the beginning and can complete 10 Phase 2D
+solves in a row successfully, you are a blindfolded solver.
+
+That is not a small thing. Blindfolded solving is one of the most impressive skills
+in the cubing world, and you built it systematically, one letter at a time.
+
+From here, the sky is the limit. You might want to work on speed, or explore more
+advanced methods like M2, Orozco, or 3-Style. But whatever you do next, you have a
+solid foundation to build on.
+
+Congratulations.

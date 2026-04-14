@@ -56,7 +56,7 @@ The original vision has been fully realized and expanded:
 - **Phase 1** (Recognition Training): 6 levels of edge-only scrambles and 6 levels
   of corner-only scrambles, using progressively larger letter sets
 - **Phase 2** (Memo Retention Training):
-  - Phase 2A: Constructed short memos (2-12 letters, no parity)
+  - Phase 2A: Constructed short memos (2-14 letters, no parity)
   - Phase 2B: Natural length memos (16-22 letters, no parity)
   - Phase 2C: Parity guaranteed (2 and 16 letters)
   - Phase 2D: Full unrestricted solves

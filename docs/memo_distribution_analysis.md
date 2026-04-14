@@ -47,8 +47,9 @@ memo length, total memo length, and whether parity was present.
 ## Key Observations
 
 1. **Total memo length is always even.** No odd totals appear in the distribution at all. This
-makes sense because Old Pochmann always solves pieces in pairs — each swap involves 2 pieces —
-so the total memo length must always be even.
+is a consequence of the cube's permutation structure — any valid scramble can only be
+solved with an even total number of swaps, which means your memo will always have an even
+number of letters.
 
 2. **The distribution is roughly bell-shaped**, peaking at 20 letters total, which represents
 the "typical" full solve.
