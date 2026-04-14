@@ -15,8 +15,13 @@ This is not a quick process. Take your time. Enjoy it.
 You should know how to solve a Rubik's cube with your eyes open before starting this
 program. If you don't yet, here are some great resources:
 
-- [How to Solve a Rubik's Cube - WIRED](https://www.youtube.com/watch?v=R-R0KrXvWbc)
-- [How to Solve a Rubik's Cube - JPerm](https://www.youtube.com/watch?v=7Ron6MN45LY)
+* How to Solve a Rubik's Cube - WIRED: https://www.youtube.com/watch?v=R-R0KrXvWbc
+* How to Solve a Rubik's Cube - JPerm: https://www.youtube.com/watch?v=7Ron6MN45LY
+* Charlie Eggins's Tutorial series
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 1 | Lettering Scheme and Tracing: https://www.youtube.com/watch?v=fqIU6Plcjr0
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 2 | Cycle Breaking, Pairing, and Wording: https://www.youtube.com/watch?v=BVefINLblEw
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 3 | Execution: https://www.youtube.com/watch?v=bYQ3cD5s5no
+    * Beginner Rubik's Cube Blindfolded Tutorial Part 4 | Example Solve: https://www.youtube.com/watch?v=Wqa2wwSN3AE
 
 ---
 
