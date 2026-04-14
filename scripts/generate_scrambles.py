@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
     # Phase 2A
     print('Generating Phase 2A scrambles (constructed, no parity)...')
-    for length in [2, 4, 6, 8, 10, 12]:
+    for length in [2, 4, 6, 8, 10, 12, 14]:
         print(f'  Length {length}...')
         scrambles = generate_phase_2a(length)
         write_file(f'{base}/phase_2_memo/phase_2a_constructed/memo_length_{length}_scrambles.txt', scrambles)

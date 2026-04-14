@@ -36,6 +36,9 @@ Your memo will contain exactly 10 letters in total.
 ### Level 6: 12 total letters
 Your memo will contain exactly 12 letters in total.
 
+### Level 7: 14 total letters
+Your memo will contain exactly 14 letters in total.
+
 ---
 
 ## How to Use the Scramble Files
